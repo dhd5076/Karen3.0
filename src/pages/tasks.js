@@ -2,7 +2,7 @@ import Layout from "@/components/Layout"
 import {useRouter} from 'next/navigation';
 import {useState} from 'react'
 
-import { HiCheck, HiPlusCircle } from 'react-icons/hi'
+import { HiCheck, HiPlusCircle, HiTrash } from 'react-icons/hi'
 
 const Tasks = ({ tasks }) => {
 
@@ -53,9 +53,12 @@ const Tasks = ({ tasks }) => {
                             <h1> {task.name} </h1>
                         </div>
                         <div>
-                        <button onClick={() => deleteTask(task._id)} className="mr-4 rounded px-2 py-1 bg-emerald-800 text-emerald-200 hover:bg-emerald-200 hover:text-emerald-800"> 
-                            <HiCheck/>
-                        </button>
+                            <button onClick={() => deleteTask(task._id)} className="mr-4 rounded px-2 py-1 bg-emerald-800 text-emerald-200 hover:bg-emerald-200 hover:text-emerald-800"> 
+                                <HiCheck/>
+                            </button>
+                            <button onClick={() => deleteTask(task._id)} className="mr-4 rounded px-2 py-1 bg-red-800 text-red-200 hover:bg-red-200 hover:text-red-800"> 
+                                <HiTrash/>
+                            </button>
                         </div>
                      </li>
                 )})}
