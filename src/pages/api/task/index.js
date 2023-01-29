@@ -21,6 +21,7 @@ export default async (req, res) => {
             break;
         case 'POST':
             try {
+                console.log(req.body)
                 const task = await Task.create(req.body);
 
                 res.status(201).json({ 
