@@ -1,9 +1,13 @@
 import Layout from "@/components/Layout"
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
+import {useState} from 'react'
 
 import { HiCheck, HiPlusCircle } from 'react-icons/hi'
 
 const Tasks = ({ tasks }) => {
+
+    const [taskName, setTaskName] = useState('');
+
     const router = useRouter();
 
     const deleteTask = async (id) => {
@@ -27,14 +31,14 @@ const Tasks = ({ tasks }) => {
             }
         })
         router.push('/tasks');
-        
+        setTaskName('');
     }
 
     return (
         <Layout>
             <div className="flex bg-emerald-200 p-2">
                 <form onSubmit={createTask} className="w-full inline-flex items-center">
-                        <input name="name" className="p-1 w-3/4 bg-emerald-100 border-emerald-800 rounded"></input>
+                        <input autoComplete="off" type="text" onChange={event => setTaskName(event.target.value)} value={taskName} name="name" className="p-1 w-3/4 bg-emerald-100 border-emerald-800 rounded"></input>
                         <button className="ml-2 text-2xl rounded text-emerald-800"> 
                             <HiPlusCircle/>
                         </button>

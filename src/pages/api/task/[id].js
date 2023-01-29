@@ -10,13 +10,11 @@ export default async (req, res) => {
         case 'DELETE':
             try {
                 const tasks = await Task.findByIdAndDelete(req.query.id);
-                console.log(id)
                 res.status(200).json({ 
                     success: true,
                     data: tasks
                 });
             } catch (error) {
-                console.log(error)
                 res.status(400).json({ success: false});
             }
             break;
